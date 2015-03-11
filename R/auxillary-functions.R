@@ -447,6 +447,10 @@ realCigarPositions <- function(RleCigar) {
     
     cs <- cs[!names(cs) == "D"]
     cs <- cs[!names(cs) == "N"]
+
+	#remove matches overexeeding the length of the read
+	cs <- cs[!cs>length(v)]
+
     
     cs
 }
@@ -479,6 +483,9 @@ realCigarPositionsList <- function(RleCigarList) {
         cs <- cs[!names(cs) == "D"]
         cs <- cs[!names(cs) == "N"]
         
+		#remove matches overexeeding the length of the read
+		cs <- cs[!cs>length(v)]
+
         cs
     })
 }
