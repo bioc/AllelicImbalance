@@ -292,7 +292,7 @@ setMethod("defaultPhase", signature("numeric"),
 #' @docType methods
 #' @param x ASEset object
 #' @param strand can be "+", "-" or "*"
-#' @param gr GenomicRanges object to summmarize over
+#' @param region GenomicRanges object to summmarize over
 #' @param ... arguments to forward to internal functions
 #' @author Jesper R. Gadin, Lasse Folkersen
 #' @keywords summary
@@ -328,7 +328,7 @@ setGeneric("regionSummary", function(x, ... ){
 #' @rdname regionSummary
 #' @export
 setMethod("regionSummary", signature("ASEset"),
-		function(x, gr, strand="*", ...
+		function(x, region, strand="*", ...
 	){
 
 		#needs alternative allele
@@ -337,7 +337,7 @@ setMethod("regionSummary", signature("ASEset"),
 		}
 
 		#make overlap and subset based on gr
-		hits <- findOverlaps(x,gr)
+		hits <- findOverlaps(x,region)
 		x <- x[queryHits(hits),]
 
 		fr <- fraction(x, strand=strand, top.fraction.criteria="phase")
@@ -356,17 +356,17 @@ setMethod("regionSummary", signature("ASEset"),
 			ref <- mcols(x)[["ref"]]
 			alt <- mcols(x)[["alt"]]
 		
-			apply(t(mat),1,function(y){
+			apply(t(mat),1,function(y, ref, alt){
 				
 				vec <- rep(NA,length(y))
 				if(any(y == 1)){
-					vec[y == 1] <- ref[y == 1]
+					vec[y == 1] <- alt[y == 1]
 				}
 				if(any(y == 0)){
-					vec[y == 0] <- alt[y == 0]
+					vec[y == 0] <- ref[y == 0]
 				}
 				vec
-			})
+			}, ref=ref, alt=alt)
 			
 		}
 

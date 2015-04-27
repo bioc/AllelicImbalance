@@ -280,7 +280,7 @@ genotype(a) <- inferGenotypes(a)
 ref(a) <- randomRef(a)
 
 #get the fraction of the reference allele
-refFrac <- refFraction(a)
+refFrac <- fraction(a, top.fraction.criteria="ref")
 
 #check mean
 mean(refFrac)
@@ -479,8 +479,8 @@ The regionSummary function can be used to investigate if there is a consistent i
 
 ```{r echo=TRUE, eval=TRUE, message=FALSE}
 # in this example every snp is on separate exons
-txGR <- granges(ASEset)
-rs <- regionSummary(ASEset, txGR)
+region <- granges(ASEset)
+rs <- regionSummary(ASEset, region)
 head(rs)
 ```
 
