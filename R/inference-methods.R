@@ -286,7 +286,16 @@ setMethod("inferAltAllele", signature(x = "ASEset"), function(x, strand="*", ret
 	ref <- mcols(x)[,"ref"]
 	ar <- arank(x, return.class="matrix")[,c(1,2)]
 	tf <- ar == matrix(ref, nrow=nrow(x), ncol=2)
-	
+
+	#when ref was not found from the 2 higliest ranked alleles
+	#then set the 1st ranked allele there. shout a warning.
+	ap0 <- apply(tf,1,function(x){sum(x)==0})
+	if(any(ap0)){
+				warning(sum(ap0),"SNP reference alleles, were not among the two most expressed alleles")
+			tf[ap0,1] <- TRUE
+	}
+
+
 	ar[!tf]
 
 })
