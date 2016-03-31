@@ -1,6 +1,3 @@
-#'@include auxillary-functions.R
-NULL
-
 #' chi-square test
 #' 
 #' Performs a chisq.test on an ASEset object.
