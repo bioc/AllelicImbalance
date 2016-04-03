@@ -286,14 +286,14 @@ chisq.test(a.stranded[,5:8], "-")
 # Summary functions
 The regionSummary function can be used to investigate if there is a consistent imbalance in the same direction over a region (e.g. a transcript). Besides providing the user with information of how many AI:s are up or down, the function returns several descriptive statistics for the result. The list below explains the acronyms retrieved using the 'basic' accessor:   
 
-* hets the number of heterozygote SNPs
-* homs the number of homozygote SNPs
-* mean.fr the mean of fractions for all hets
-* sd.fr the standard deviation for the fractions for all hets
-* mean.delta the mean of the delta fractions for all hets
-* sd.delta the standard deviation for the delta fractions for all hets
-* ai.up the number of hets significantly up-regulated in one allele.
-* ai.down the number of hets significantly down-regulated in one allele.
+1 hets the number of heterozygote SNPs
+2 homs the number of homozygote SNPs
+3 mean.fr the mean of fractions for all hets
+4 sd.fr the standard deviation for the fractions for all hets
+5 mean.delta the mean of the delta fractions for all hets
+6 sd.delta the standard deviation for the delta fractions for all hets
+7 ai.up the number of hets significantly up-regulated in one allele.
+8 ai.down the number of hets significantly down-regulated in one allele.
 
 ```{r echo=TRUE, eval=TRUE, message=FALSE}
 # in this example every snp is on separate exons
