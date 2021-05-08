@@ -114,7 +114,6 @@
 #' @importClassesFrom AnnotationDbi AnnotationDb
 #' @importClassesFrom AnnotationDbi OrgDb
 #' @importClassesFrom AnnotationDbi ChipDb
-#' @importClassesFrom AnnotationDbi InparanoidDb
 #' @importClassesFrom AnnotationDbi GODb
 #' @importClassesFrom AnnotationDbi ReactomeDb
 #'
